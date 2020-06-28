@@ -23,11 +23,23 @@ namespace ConsoleAppExperiments
             //create some accounts
             List<BankAccount> accounts = new List<BankAccount>();
             accounts.Add(new BankAccount("Jenifer", 200, "EUR"));
-            accounts[0].PrintInfo();
             accounts.Add(new BankAccount("Anna", 5000, "EUR"));
-            accounts[1].PrintInfo();
             accounts.Add(new BankAccount("Michael", 450, "EUR"));
-            accounts[2].PrintInfo();
+
+            foreach (var account in accounts)
+            {
+                account.PrintInfo();
+            }
+
+            //make some transactions for jenifer
+            accounts[0].MakeDeposit(100, "Birthday gift");
+            accounts[0].MakeDeposit(400, "First salary");
+            accounts[0].MakeDeposit(50, "Bonus");
+            Console.WriteLine(accounts[0].Balance);
+            accounts[0].MakeWithdrawal(150, "Online course");
+            Console.WriteLine(accounts[0].Balance);
+            accounts[0].MakeWithdrawal(1500, "Online shopping");
+            Console.WriteLine(accounts[0].Balance);
         }
     }
 }
